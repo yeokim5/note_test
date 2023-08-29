@@ -66,10 +66,17 @@ function addNewNote(text = "") {
     updateLS();
   });
 
+  const headerTags = note.querySelectorAll("h2, p, h3, h4");
+
+  headerTags.forEach((header) => {
+    header.addEventListener("click", () => {
+      header.classList.toggle("completed");
+    });
+  });
+
   textArea.addEventListener("input", (e) => {
     const { value } = e.target;
     main.innerHTML = marked(value);
-
     updateLS();
   });
 
