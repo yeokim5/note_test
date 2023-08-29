@@ -11,6 +11,19 @@ addBtn.addEventListener("click", () => {
   addNewNote();
 });
 
+const headerTags = document.querySelectorAll(".main h2");
+
+headerTags.forEach((header) => {
+  header.addEventListener("click", () => {
+    const sibling = header;
+    if (sibling.classList.contains("completed")) {
+      sibling.classList.remove("completed");
+    } else {
+      sibling.classList.add("completed");
+    }
+  });
+});
+
 function addNewNote(text = "") {
   const note = document.createElement("div");
   note.innerHTML = `
