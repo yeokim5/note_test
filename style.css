@@ -75,6 +75,11 @@ body {
   cursor: pointer;
 }
 
-h2.completed {
+.completed {
   background-color: rgb(130, 156, 199);
+}
+
+h3 {
+  margin: 0;
+  padding: 0;
 }

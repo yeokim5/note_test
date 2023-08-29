@@ -11,19 +11,6 @@ addBtn.addEventListener("click", () => {
   addNewNote();
 });
 
-const headerTags = document.querySelectorAll(".main h2");
-
-headerTags.forEach((header) => {
-  header.addEventListener("click", () => {
-    const sibling = header;
-    if (sibling.classList.contains("completed")) {
-      sibling.classList.remove("completed");
-    } else {
-      sibling.classList.add("completed");
-    }
-  });
-});
-
 function addNewNote(text = "") {
   const note = document.createElement("div");
   note.innerHTML = `
@@ -67,10 +54,17 @@ function addNewNote(text = "") {
     updateLS();
   });
 
+  const headerTags = note.querySelectorAll("h2, p, h3, h4");
+
+  headerTags.forEach((header) => {
+    header.addEventListener("click", () => {
+      header.classList.toggle("completed");
+    });
+  });
+
   textArea.addEventListener("input", (e) => {
     const { value } = e.target;
     main.innerHTML = marked(value);
-
     updateLS();
   });
 
