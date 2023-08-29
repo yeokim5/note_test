@@ -1,0 +1,6 @@
+1. const {value} : destruction make same name as that variable name
+2. margin auto horizontally center the element within its container
+3. document.createElement: 보통 이런식으로 코드진행한다.
+4. appendChild: inner tag of html
+5. function addNewNote(text = ""): default parameter, 
+if you call the function without providing a value for the text parameter, it will default to an empty string ("").
