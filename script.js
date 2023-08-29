@@ -12,7 +12,6 @@ addBtn.addEventListener("click", () => {
 });
 
 const headerTags = document.querySelectorAll(".main h2");
-
 headerTags.forEach((header) => {
   header.addEventListener("click", () => {
     const sibling = header;
