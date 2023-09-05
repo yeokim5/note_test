@@ -1,14 +1,25 @@
 const addBtn = document.querySelector(".add");
 const notes = JSON.parse(localStorage.getItem("notes"));
 
+function refresh() {
+  const headerTags = document.body.querySelectorAll("p");
+  headerTags.forEach((header) => {
+    header.addEventListener("click", () => {
+      header.classList.toggle("completed");
+    });
+  });
+}
+
 if (notes) {
   notes.forEach((note) => {
     addNewNote(note);
   });
+  refresh();
 }
 
 addBtn.addEventListener("click", () => {
   addNewNote();
+  refresh();
 });
 
 const headerTags = document.querySelectorAll(".main h2");
@@ -54,29 +65,26 @@ function addNewNote(text = "") {
   completeButton.addEventListener("click", () => {
     note_container.classList.toggle("completed");
     main.classList.toggle("completed");
+    refresh();
   });
 
   editBtn.addEventListener("click", () => {
     main.classList.toggle("hidden");
     textArea.classList.toggle("hidden");
+
+    console.log("refersh");
   });
 
   deleteBtn.addEventListener("click", () => {
     note.remove();
     updateLS();
-  });
-
-  const headerTags = note.querySelectorAll("h2, p, h3, h4");
-
-  headerTags.forEach((header) => {
-    header.addEventListener("click", () => {
-      header.classList.toggle("completed");
-    });
+    refresh();
   });
 
   textArea.addEventListener("input", (e) => {
     const { value } = e.target;
     main.innerHTML = marked(value);
+
     updateLS();
   });
 
@@ -87,7 +95,7 @@ function updateLS() {
   const notesText = document.querySelectorAll("textarea");
 
   const notes = [];
-
+  refresh();
   notesText.forEach((note) => {
     notes.push(note.value);
   });
