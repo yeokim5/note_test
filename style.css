@@ -75,13 +75,10 @@ body {
   cursor: pointer;
 }
 
-
 .completed {
   background-color: rgb(130, 156, 199);
 }
 
-h3 {
-  margin: 0;
-  padding: 0;
+p {
+  font-weight: bold;
 }
-
